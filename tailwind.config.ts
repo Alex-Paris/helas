@@ -1,6 +1,7 @@
+import { withTV } from 'tailwind-variants/transformer'
 import type { Config } from 'tailwindcss'
 
-const config: Config = {
+const config: Config = withTV({
   content: ['./app/**/*.{js,ts,jsx,tsx,mdx}'],
 
   theme: {
@@ -27,6 +28,11 @@ const config: Config = {
         black: '#555563',
       },
 
+      boxShadow: {
+        'card-shadow-light': '0px 24px 32px -12px rgba(0, 0, 0, 0.25)',
+        'card-shadow-lighter': '0px 24px 32px -12px rgba(0, 0, 0, 0.10)',
+      },
+
       fontFamily: {
         sans: ['var(--font-roboto-flex)'],
       },
@@ -34,6 +40,6 @@ const config: Config = {
   },
 
   plugins: [],
-}
+})
 
 export default config

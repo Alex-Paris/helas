@@ -3,7 +3,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Roboto_Flex as RobotoFlex } from 'next/font/google'
 
-const inter = RobotoFlex({
+const roboto = RobotoFlex({
   weight: ['300', '400', '500', '600'],
   variable: '--font-roboto-flex',
   subsets: ['latin'],
@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="el">
-      <body className={inter.className}>{children}</body>
+      <body className={roboto.className}>{children}</body>
     </html>
   )
 }
