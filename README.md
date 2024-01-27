@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Nelios Code Page Test by Alex Paris
+This is the code test of Nelios made by Alex Paris.
 
-## Getting Started
+**Node** v20.11.0
+**Npm** v8.18.0
+Path `http://localhost:3000/`
 
-First, run the development server:
+## Instructions
+1. Execute the command `npm install` \
+3. Execute the command `npm run migrate` and wait for the migration process to complete \
+4. Run the following command `npm run dev`. \
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Commands
+`npm run dev`: to execute the NextJS on development mode \
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Packages
+**Typing**: _Typescript, ESlint and @paristech/eslint-config._ \
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Coding Test
+>We want the following page to be developed to the best extent possible on desktop and mobile:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+>https://www.figma.com/file/mvJquXwaKbewAa1m2JFunr/Test-Page?type=design&node-id=3801-10583&mode=design&t=NFaRqXyiq7it0uL2-0
 
-## Learn More
+>To fetch the results, a request will need to be made to the following url: https://aio.server9.nelios.com/ with bearer token: "QcKjgrWuKr0mYaavwwtpSvk7MyWhyWh3k0Secv".
 
-To learn more about Next.js, take a look at the following resources:
+>If done correctly the endpoint will return a response with dummy json data. These will feed the list of results. In this list, sorting functionalities (ascending/descending price and alphabetical) as well as filtering by price and categories (meal_plan) can be implemented.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+>It is not necessary to complete all of the above, obviously the more complete the better. We want to see your best self in the above exercise because from the result of the test we will form the final list. The axes of the evaluation will be related to the quality and purity of the code, the overall approach to the solution, the responsiveness and the precise performance of your front-end with Figma.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+>Deadline: Friday 2/2/2024 at 11:00 am.
