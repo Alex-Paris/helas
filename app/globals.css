@@ -11,10 +11,87 @@
 
   body {
     background-color: theme('colors.background');
+    font-family: theme('fontFamily.sans');
     -webkit-font-smoothing: antialiased;
   }
   
   body, input, textarea, button {
-    fontWeight: 700;
+    font-weight: 400;
+    color: theme('colors.black');
+  }
+
+  h1, h2, h3, h4, h5, h6, h7 {
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: 4.75rem/* 76px */;
+    letter-spacing: 3.8px;
+  }
+
+  h2 {
+    font-size: 3.8125rem/* 61px */;
+    letter-spacing: 3.05px;
+  }
+
+  h3 {
+    font-size: 3.0625rem/* 49px */;
+    letter-spacing: 2.45px;
+  }
+
+  h4 {
+    font-size: 2.4375rem/* 39px */;
+    letter-spacing: 1.95px;
+  }
+
+  h5 {
+    font-size: 1.9375rem/* 31px */;
+    letter-spacing: 1.55px;
+  }
+
+  h6 {
+    font-size: 1.5625rem/* 25px */;
+    letter-spacing: 1.25px;
+  }
+
+  h7 {
+    font-size: 1.25rem/* 20px */;
+    letter-spacing: 1px;
+  }
+}
+
+@layer components {
+  .text-16 {
+    @apply leading-7
+  }
+
+  .text-16-bold {
+    @apply font-semibold leading-7
+  }
+
+  .text-14 {
+    @apply text-sm leading-6
+  }
+
+  .text-small-12 {
+    @apply text-xs leading-[0.875rem]
+  }
+
+  .text-field-14 {
+    @apply text-sm leading-4
+  }
+
+  .text-button {
+    @apply font-medium text-sm leading-4
+  }
+
+  .text-menu-links {
+    @apply text-[0.8125rem] leading-5
+  }
+
+  .text-menu-items {
+    @apply font-medium text-sm leading-5
   }
 }

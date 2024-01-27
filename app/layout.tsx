@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import { Roboto_Flex as RobotoFlex } from 'next/font/google'
 
 const inter = RobotoFlex({
-  weight: ['700'],
+  weight: ['300', '400', '500', '600'],
   variable: '--font-roboto-flex',
   subsets: ['latin'],
 })
