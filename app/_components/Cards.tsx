@@ -1,7 +1,6 @@
-import Image from 'next/image'
-
 import { HotelDTO } from '../_dtos/HotelDTO'
 import { Button } from './Button'
+import { Image } from './Image'
 
 interface CardsProps {
   cards: HotelDTO[]
@@ -15,8 +14,8 @@ export function Cards({ cards }: CardsProps) {
           <article className="group cursor-pointer rounded-xl bg-translucent-bg shadow-bg-blur-shadow-lighter backdrop-blur-lg">
             <div className="overflow-hidden rounded-xl">
               <Image
-                className="h-72 object-cover transition-transform duration-700 group-hover:scale-110"
-                src={card.photo}
+                className="h-72 object-cover group-hover:scale-110"
+                image={card.photo}
                 alt={card.name}
                 width={500}
                 height={500}

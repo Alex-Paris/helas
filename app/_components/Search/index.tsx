@@ -12,8 +12,8 @@ import { TogglerButton } from './TogglerButton'
 
 const formSchema = z.object({
   destination: z.string().optional(),
-  checkIn: z.date().optional(),
-  checkOut: z.date().optional(),
+  checkIn: z.string().optional(),
+  checkOut: z.string().optional(),
   numberOfPeople: z.string().optional(),
 })
 
@@ -32,7 +32,7 @@ export default function SearchForm() {
   })
 
   async function handleSearch(form: SearchFormInputs) {
-    console.log(form.destination)
+    alert(form.destination)
     // try {
     //   const sectorIndex = sectors.findIndex((s) => s.name === form.sector)
     //   const to = sectors[sectorIndex].email || 'secretaria@funada.com.br'
@@ -132,7 +132,7 @@ export default function SearchForm() {
           actualState={dirtyFields.numberOfPeople ? 'filled' : 'default'}
           register={register('numberOfPeople')}
         >
-          <Button>
+          <Button type="submit">
             <MagnifyingGlass /> Αναζήτηση
           </Button>
         </Input>

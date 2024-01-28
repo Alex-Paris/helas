@@ -11,7 +11,7 @@ export function Filter() {
             <label className="text-small-12">Από</label>
             <input
               className="text-field-14 rounded-lg border-[1px] border-field-border bg-translucent-bg px-4 py-3 placeholder-gray"
-              type="text"
+              type="number"
               placeholder="€"
             />
           </div>
@@ -19,7 +19,7 @@ export function Filter() {
             <label className="text-small-12">Έως</label>
             <input
               className="text-field-14 rounded-lg border-[1px] border-field-border bg-translucent-bg px-4 py-3 placeholder-gray"
-              type="text"
+              type="number"
               placeholder="€"
             />
           </div>
