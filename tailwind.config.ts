@@ -31,6 +31,7 @@ const config: Config = withTV({
       boxShadow: {
         'card-shadow-light': '0px 24px 32px -12px rgba(0, 0, 0, 0.25)',
         'card-shadow-lighter': '0px 24px 32px -12px rgba(0, 0, 0, 0.10)',
+        'bg-blur-shadow-lighter': '0px 24px 32px -12px rgba(0, 0, 0, 0.10)',
       },
 
       fontFamily: {
