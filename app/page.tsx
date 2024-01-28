@@ -4,8 +4,18 @@ import { Filter } from './_components/Filter'
 import { Ordering } from './_components/Ordering'
 import { Promo } from './_components/Promo'
 import SearchForm from './_components/Search'
+import { HotelDTO } from './_dtos/HotelDTO'
 
-export default function Home() {
+const token = 'QcKjgrWuKr0mYaavwwtpSvk7MyWhyWh3k0Secv'
+
+export default async function Home() {
+  const res = await fetch('https://aio.server9.nelios.com/', {
+    method: 'GET',
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  const body = await res.json().catch(() => [])
+  const hotels = body.data as HotelDTO[]
+
   return (
     <main className="space-y-16">
       <Breadcrumbs />
@@ -29,7 +39,7 @@ export default function Home() {
         </div>
 
         <Filter />
-        <Cards />
+        <Cards cards={hotels} />
       </div>
 
       <Promo />
