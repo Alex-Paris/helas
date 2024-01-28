@@ -1,6 +1,8 @@
 import Breadcrumbs from './_components/Breadcrumbs'
 import { Cards } from './_components/Cards'
+import { Filter } from './_components/Filter'
 import { Ordering } from './_components/Ordering'
+import { Promo } from './_components/Promo'
 import SearchForm from './_components/Search'
 
 export default function Home() {
@@ -17,22 +19,20 @@ export default function Home() {
       <SearchForm />
 
       {/* Results */}
-      <div className="container-custom flex gap-6">
-        <div>
-          <div />
-          <div className="h-11 w-[312px] bg-translucent-bg"></div>
-        </div>
-        <div>
-          <div className="flex items-center justify-between px-3">
-            <div className="text-16">
-              <span className="text-16-bold">139</span> διαθέσιμα πακέτα
-              διακοπών
-            </div>
-            <Ordering />
+      <div className="container-custom grid grid-cols-[312px_1fr] gap-6">
+        <div />
+        <div className="flex items-center justify-between px-3">
+          <div className="text-16">
+            <span className="text-16-bold">139</span> διαθέσιμα πακέτα διακοπών
           </div>
-          <Cards />
+          <Ordering />
         </div>
+
+        <Filter />
+        <Cards />
       </div>
+
+      <Promo />
     </main>
   )
 }

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
-import img from '../../_assets/promo.webp'
-import { Button } from '../Button'
+import img from '../_assets/promo.webp'
+import { Button } from './Button'
 
 export function Cards() {
   const cards = [
@@ -55,8 +55,9 @@ export function Cards() {
               <span>{card.text1}</span>
               <h6 className="max-h-[72px] overflow-hidden">{card.text2}</h6>
               <div className="flex items-center justify-between">
-                <div className="flex">
-                  ΑΠΟ &nbsp;<h6>{card.text3}</h6>
+                <div className="flex items-end">
+                  <span className="text-xs font-semibold">ΑΠΟ</span>&nbsp;
+                  <h6>{card.text3}</h6>
                 </div>
                 <Button>Κράτηση</Button>
               </div>

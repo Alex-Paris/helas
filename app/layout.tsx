@@ -4,8 +4,21 @@ import type { Metadata } from 'next'
 import { Roboto_Flex as RobotoFlex } from 'next/font/google'
 
 const roboto = RobotoFlex({
-  weight: ['300', '400', '500', '600'],
+  weight: 'variable',
   variable: '--font-roboto-flex',
+  axes: [
+    'wdth',
+    'slnt',
+    'GRAD',
+    'XTRA',
+    'YOPQ',
+    'YTLC',
+    'YTUC',
+    'YTAS',
+    'YTDE',
+    'YTFI',
+    'opsz',
+  ],
   subsets: ['latin'],
 })
 
@@ -21,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="el">
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.variable}>{children}</body>
     </html>
   )
 }

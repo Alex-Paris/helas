@@ -20,14 +20,16 @@
   }
   
   body, input, textarea, button {
-    font-weight: 400;
+    font-weight: 350;
     color: theme('colors.black');
+    font-variation-settings: 'wdth' 108, 'slnt' 0, 'GRAD' 0, 'XTRA' 468, 'YOPQ' 90, 'YTLC' 485, 'YTUC' 732, 'YTAS' 750, 'YTDE' -180, 'YTFI' 738, 'opsz' 13;
   }
 
   h1, h2, h3, h4, h5, h6, h7 {
     font-weight: 600;
     line-height: 1;
     text-transform: uppercase;
+    font-variation-settings: 'wdth' 40, 'slnt' 0, 'GRAD' 0, 'XTRA' 468, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738, 'opsz' 144;
   }
 
   h1 {
