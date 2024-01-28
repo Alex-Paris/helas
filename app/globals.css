@@ -25,7 +25,7 @@
     font-variation-settings: 'wdth' 108, 'slnt' 0, 'GRAD' 0, 'XTRA' 468, 'YOPQ' 90, 'YTLC' 485, 'YTUC' 732, 'YTAS' 750, 'YTDE' -180, 'YTFI' 738, 'opsz' 13;
   }
 
-  h1, h2, h3, h4, h5, h6, h7 {
+  h1, h2, h3, h4, h5, h6, .h7 {
     font-weight: 600;
     line-height: 1;
     text-transform: uppercase;
@@ -62,7 +62,7 @@
     letter-spacing: 1.25px;
   }
 
-  h7 {
+  .h7 {
     font-size: 1.25rem/* 20px */;
     letter-spacing: 1px;
   }
