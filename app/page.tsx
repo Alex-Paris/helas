@@ -1,5 +1,5 @@
 import Breadcrumbs from './_components/Breadcrumbs'
-import Search from './_components/Search'
+import SearchForm from './_components/Search'
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
         <p className="text-14">Πακέτα - Προσφορές</p>
       </div>
 
-      <Search />
+      <SearchForm />
     </main>
   )
 }
