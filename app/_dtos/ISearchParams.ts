@@ -1,4 +1,6 @@
 export interface ISearchParams {
   order?: string
-  priceRng?: string
+  priceRange?: string
+  star?: string
+  meal?: string
 }

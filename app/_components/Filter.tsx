@@ -1,10 +1,56 @@
+'use client'
+
+import { useSearchParams } from 'next/navigation'
+import { ChangeEvent, useEffect, useState } from 'react'
+
+import useSearch from '../_hooks/useSearch'
+
 interface FilterProps {
   meals: string[]
+  stars: string[]
 }
 
-export function Filter({ meals }: FilterProps) {
+export function Filter({ meals, stars }: FilterProps) {
+  const { handleParam } = useSearch()
+  const params = useSearchParams()
+
+  const [mealsChecked, setMealsChecked] = useState(
+    decodeURIComponent(params.get('meal') || '').split(','),
+  )
+  const [starsChecked, setStarsChecked] = useState(
+    decodeURIComponent(params.get('star') || '').split(','),
+  )
+  const [priceRange, setPriceRange] = useState(
+    decodeURIComponent(params.get('priceRange') || '').split(','),
+  )
+
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    switch (e.target.name) {
+      case 'star':
+        handleParam('star', e.target.value, e.target.checked ? 'add' : 'remove')
+        break
+
+      case 'meal':
+        handleParam('meal', e.target.value, e.target.checked ? 'add' : 'remove')
+        break
+
+      case 'price':
+        handleParam('priceRange', e.target.value)
+        break
+
+      default:
+        break
+    }
+  }
+
+  useEffect(() => {
+    setMealsChecked(decodeURIComponent(params.get('meal') || '').split(','))
+    setStarsChecked(decodeURIComponent(params.get('star') || '').split(','))
+    setPriceRange(decodeURIComponent(params.get('priceRange') || '').split(','))
+  }, [params])
+
   return (
-    <div className="sticky top-4 my-3 flex h-fit flex-col gap-6 rounded-xl bg-translucent-bg p-6">
+    <div className="sticky top-4 my-3 flex h-fit max-h-[calc(100vh-1.5rem)] min-h-fit flex-col gap-6 overflow-scroll rounded-xl bg-translucent-bg bg-scroll p-6">
       <h5 className="mb-6">ΦΙΛΤΡΑ</h5>
 
       {/* Euro price */}
@@ -16,6 +62,16 @@ export function Filter({ meals }: FilterProps) {
             <input
               className="text-field-14 rounded-lg border-[1px] border-field-border bg-translucent-bg px-4 py-3 placeholder-gray"
               type="number"
+              onBlur={(e) =>
+                handleParam(
+                  'priceRange',
+                  [e.target.value, priceRange[1]].join(','),
+                )
+              }
+              value={priceRange[0]}
+              onChange={(e) =>
+                setPriceRange([e.target.value || '0', priceRange[1] || '0'])
+              }
               placeholder="€"
             />
           </div>
@@ -24,26 +80,57 @@ export function Filter({ meals }: FilterProps) {
             <input
               className="text-field-14 rounded-lg border-[1px] border-field-border bg-translucent-bg px-4 py-3 placeholder-gray"
               type="number"
+              onBlur={(e) =>
+                handleParam(
+                  'priceRange',
+                  [priceRange[0], e.target.value].join(','),
+                )
+              }
+              value={priceRange[1]}
+              onChange={(e) =>
+                setPriceRange([priceRange[0] || '0', e.target.value || '0'])
+              }
               placeholder="€"
             />
           </div>
         </div>
         <div className="text-field-14 space-y-4">
           <div className="flex items-center gap-2">
-            <input type="radio" id="less50" name="price" value="less50" />
-            <label htmlFor="less50" className="w-full cursor-pointer">
+            <input
+              type="radio"
+              id="0,50"
+              name="price"
+              value="0,50"
+              checked={priceRange.join(',') === '0,50'}
+              onChange={handleChange}
+            />
+            <label htmlFor="0,50" className="w-full cursor-pointer">
               Έως 50 €
             </label>
           </div>
           <div className="flex items-center gap-2">
-            <input type="radio" id="50to150" name="price" value="50to150" />
-            <label htmlFor="50to150" className="w-full cursor-pointer">
+            <input
+              type="radio"
+              id="50,150"
+              name="price"
+              value="50,150"
+              checked={priceRange.join(',') === '50,150'}
+              onChange={handleChange}
+            />
+            <label htmlFor="50,150" className="w-full cursor-pointer">
               50 - 150 €
             </label>
           </div>
           <div className="flex items-center gap-2">
-            <input type="radio" id="150to500" name="price" value="150to500" />
-            <label htmlFor="150to500" className="w-full cursor-pointer">
+            <input
+              type="radio"
+              id="150,500"
+              name="price"
+              value="150,500"
+              checked={priceRange.join(',') === '150,500'}
+              onChange={handleChange}
+            />
+            <label htmlFor="150,500" className="w-full cursor-pointer">
               150 - 500 €
             </label>
           </div>
@@ -60,9 +147,44 @@ export function Filter({ meals }: FilterProps) {
             <div className="text-field-14 space-y-4">
               {meals.map((meal) => (
                 <div key={meal} className="flex items-center gap-2">
-                  <input type="checkbox" id={meal} name="meal" value={meal} />
+                  <input
+                    type="checkbox"
+                    id={meal}
+                    name="meal"
+                    value={meal}
+                    checked={mealsChecked.includes(meal)}
+                    onChange={handleChange}
+                  />
                   <label htmlFor={meal} className="w-full cursor-pointer">
                     {meal}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
+
+      {/* Stars Filter */}
+      {stars.length > 0 && (
+        <>
+          <div className="h-[1px] w-full bg-stroke" />
+
+          <div className="flex flex-col gap-6">
+            <p className="h7">Εκτίμηση</p>
+            <div className="text-field-14 space-y-4">
+              {stars.map((star) => (
+                <div key={star} className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id={star}
+                    name="star"
+                    value={star}
+                    checked={starsChecked.includes(star)}
+                    onChange={handleChange}
+                  />
+                  <label htmlFor={star} className="w-full cursor-pointer">
+                    {star} stars
                   </label>
                 </div>
               ))}

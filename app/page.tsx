@@ -12,7 +12,7 @@ interface HomeProps {
 }
 
 export default async function Home({ searchParams }: HomeProps) {
-  const { hotels, meals } = await getHotels(searchParams)
+  const { hotels, meals, stars } = await getHotels(searchParams)
 
   return (
     <main className="space-y-16">
@@ -36,7 +36,7 @@ export default async function Home({ searchParams }: HomeProps) {
           <Ordering actualOrder={searchParams.order} />
         </div>
 
-        <Filter meals={meals} />
+        <Filter meals={meals} stars={stars} />
         <Cards cards={hotels} />
       </div>
 

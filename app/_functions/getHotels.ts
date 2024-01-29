@@ -1,11 +1,18 @@
 import { IHotelDTO } from '../_dtos/IHotelDTO'
 import { ISearchParams } from '../_dtos/ISearchParams'
+import { sortResults } from './sortResults'
 
 const token = 'QcKjgrWuKr0mYaavwwtpSvk7MyWhyWh3k0Secv'
 
 export async function getHotels(searchParams: ISearchParams) {
-  const { order, priceRng } = searchParams
+  const { order, priceRange, meal, star } = searchParams
 
+  // Decoding the query parameters
+  const decodedMeals = decodeURIComponent(meal || '').split(',')
+  const decodedStars = decodeURIComponent(star || '').split(',')
+  const decodedPrices = decodeURIComponent(priceRange || '').split(',')
+
+  // Fetching data from the API
   const res = await fetch('https://aio.server9.nelios.com/', {
     method: 'GET',
     headers: { Authorization: `Bearer ${token}` },
@@ -13,14 +20,20 @@ export async function getHotels(searchParams: ISearchParams) {
   const body = await res.json().catch(() => [])
   const hotels = body.data as IHotelDTO[]
 
-  let filteredHotels: IHotelDTO[] = []
+  const filteredHotels: IHotelDTO[] = hotels.filter(
+    (hotel) =>
+      (meal ? decodedMeals.includes(hotel.meal_plan) : true) &&
+      (star ? decodedStars.includes(hotel.rating.toString()) : true) &&
+      (priceRange
+        ? hotel.price >= parseFloat(decodedPrices[0]) &&
+          hotel.price <= parseFloat(decodedPrices[1])
+        : true),
+  )
 
-  if (priceRng) {
-    // const filteredOrders = hotels.filter(order =>
-    //   (!minPrice || order.price >= parseFloat(minPrice)) &&
-    //   (!maxPrice || order.price <= parseFloat(maxPrice))
-    // )
-  }
+  // const filteredOrders = hotels.filter(order =>
+  //   (!minPrice || order.price >= parseFloat(minPrice)) &&
+  //   (!maxPrice || order.price <= parseFloat(maxPrice))
+  // )
 
   const meals = hotels
     .reduce((unique, order) => {
@@ -30,48 +43,16 @@ export async function getHotels(searchParams: ISearchParams) {
     .slice()
     .sort()
 
-  switch (order) {
-    case 'cheaper':
-      filteredHotels = hotels.sort((a, b) => {
-        if (a.price > b.price) return 1
-        if (a.price < b.price) return -1
-        return 0
-      })
-      break
+  const stars = hotels
+    .reduce((unique, order) => {
+      if (!unique.includes(`${order.rating}`)) unique.push(`${order.rating}`)
+      return unique
+    }, [] as string[])
+    .slice()
+    .sort((a, b) => b.localeCompare(a))
 
-    case 'expensive':
-      filteredHotels = hotels.sort((a, b) => {
-        if (a.price < b.price) return 1
-        if (a.price > b.price) return -1
-        return 0
-      })
-      break
+  // Sorting results
+  const orderedHotels = sortResults(filteredHotels, order)
 
-    case 'ascending':
-      filteredHotels = hotels.sort((a, b) => {
-        if (a.name > b.name) return 1
-        if (a.name < b.name) return -1
-        return 0
-      })
-      break
-
-    case 'descending':
-      filteredHotels = hotels.sort((a, b) => {
-        if (a.name < b.name) return 1
-        if (a.name > b.name) return -1
-        return 0
-      })
-      break
-
-    // popular
-    default:
-      filteredHotels = hotels.sort((a, b) => {
-        if (a.rating < b.rating) return 1
-        if (a.rating > b.rating) return -1
-        return 0
-      })
-      break
-  }
-
-  return { meals, hotels: filteredHotels }
+  return { meals, stars, hotels: orderedHotels }
 }

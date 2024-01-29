@@ -7,19 +7,30 @@ export default function useSearch() {
   const pathname = usePathname()
   const router = useRouter()
 
-  function handleParam(type: keyof ISearchParams, value: string) {
+  function handleParam(
+    type: keyof ISearchParams,
+    value: string,
+    method: 'change' | 'add' | 'remove' = 'change',
+  ) {
     const newParams = new URLSearchParams(params.toString())
-    const paramValue = newParams.get(type)
+    const paramValue = decodeURIComponent(newParams.get(type) || '')
 
-    if (paramValue === value) {
-      // should ignore
-      return
-    } else if (value) {
-      // should update param
-      newParams.set(type, value)
-    } else {
-      // Should remove param
-      newParams.delete(type)
+    // should update param
+    if (method === 'change' || (method === 'add' && !paramValue))
+      newParams.set(type, encodeURIComponent(value))
+
+    // Should add a new value to the param
+    if (method === 'add' && paramValue)
+      newParams.set(type, encodeURIComponent([paramValue, value].join(',')))
+
+    // Should remove param
+    if (method === 'remove' && paramValue) {
+      const regex = new RegExp('\\b' + value + '\\b,?', 'g')
+      const newParamValue = paramValue.replace(regex, '')
+
+      newParamValue !== ''
+        ? newParams.set(type, encodeURIComponent(newParamValue))
+        : newParams.delete(type)
     }
 
     const newPath = `${pathname}?${newParams.toString()}`

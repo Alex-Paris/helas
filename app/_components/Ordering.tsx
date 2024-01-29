@@ -46,12 +46,5 @@ export function Ordering({ actualOrder }: OrderingProps) {
     handleParam('order', e.target.value ?? '')
   }
 
-  return (
-    <Combobox
-      items={options}
-      value={value}
-      defaultValue={value}
-      onChange={handleChange}
-    />
-  )
+  return <Combobox items={options} value={value} onChange={handleChange} />
 }
