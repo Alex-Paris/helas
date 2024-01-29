@@ -4,11 +4,11 @@ This is the code test of Nelios made by Alex Paris.
 **Node** v20.11.0
 **Npm** v8.18.0
 Path `http://localhost:3000/`
+Vercel `https://helas.vercel.app/`
 
 ## Instructions
 1. Execute the command `npm install` \
-3. Execute the command `npm run migrate` and wait for the migration process to complete \
-4. Run the following command `npm run dev`. \
+2. Run the following command `npm run dev`. \
 
 ## Commands
 `npm run dev`: to execute the NextJS on development mode \

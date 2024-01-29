@@ -50,7 +50,7 @@ export function Filter({ meals, stars }: FilterProps) {
   }, [params])
 
   return (
-    <div className="sticky top-4 my-3 flex h-fit max-h-[calc(100vh-1.5rem)] min-h-fit flex-col gap-6 overflow-scroll rounded-xl bg-translucent-bg bg-scroll p-6">
+    <div className="sticky top-4 my-3 flex h-fit max-h-[calc(100vh-1.5rem)] flex-col gap-6 overflow-scroll rounded-xl bg-translucent-bg bg-scroll p-6">
       <h5 className="mb-6">ΦΙΛΤΡΑ</h5>
 
       {/* Euro price */}
