@@ -1,4 +1,4 @@
-export interface HotelDTO {
+export interface IHotelDTO {
   name: string
   rating: number
   meal_plan: string

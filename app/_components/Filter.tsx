@@ -1,6 +1,10 @@
-export function Filter() {
+interface FilterProps {
+  meals: string[]
+}
+
+export function Filter({ meals }: FilterProps) {
   return (
-    <div className="sticky top-4 mt-3 flex h-fit flex-col gap-6 rounded-xl bg-translucent-bg p-6">
+    <div className="sticky top-4 my-3 flex h-fit flex-col gap-6 rounded-xl bg-translucent-bg p-6">
       <h5 className="mb-6">ΦΙΛΤΡΑ</h5>
 
       {/* Euro price */}
@@ -45,6 +49,27 @@ export function Filter() {
           </div>
         </div>
       </div>
+
+      {/* Meals Filter */}
+      {meals.length > 0 && (
+        <>
+          <div className="h-[1px] w-full bg-stroke" />
+
+          <div className="flex flex-col gap-6">
+            <p className="h7">Πρόγραμμα γεύματος</p>
+            <div className="text-field-14 space-y-4">
+              {meals.map((meal) => (
+                <div key={meal} className="flex items-center gap-2">
+                  <input type="checkbox" id={meal} name="meal" value={meal} />
+                  <label htmlFor={meal} className="w-full cursor-pointer">
+                    {meal}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   )
 }

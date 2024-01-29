@@ -4,17 +4,15 @@ import { Filter } from './_components/Filter'
 import { Ordering } from './_components/Ordering'
 import { Promo } from './_components/Promo'
 import SearchForm from './_components/Search'
-import { HotelDTO } from './_dtos/HotelDTO'
+import { ISearchParams } from './_dtos/ISearchParams'
+import { getHotels } from './_functions/getHotels'
 
-const token = 'QcKjgrWuKr0mYaavwwtpSvk7MyWhyWh3k0Secv'
+interface HomeProps {
+  searchParams: ISearchParams
+}
 
-export default async function Home() {
-  const res = await fetch('https://aio.server9.nelios.com/', {
-    method: 'GET',
-    headers: { Authorization: `Bearer ${token}` },
-  })
-  const body = await res.json().catch(() => [])
-  const hotels = body.data as HotelDTO[]
+export default async function Home({ searchParams }: HomeProps) {
+  const { hotels, meals } = await getHotels(searchParams)
 
   return (
     <main className="space-y-16">
@@ -35,10 +33,10 @@ export default async function Home() {
           <div className="text-16">
             <span className="text-16-bold">139</span> διαθέσιμα πακέτα διακοπών
           </div>
-          <Ordering />
+          <Ordering actualOrder={searchParams.order} />
         </div>
 
-        <Filter />
+        <Filter meals={meals} />
         <Cards cards={hotels} />
       </div>
 

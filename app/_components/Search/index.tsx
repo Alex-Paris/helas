@@ -32,40 +32,7 @@ export default function SearchForm() {
   })
 
   async function handleSearch(form: SearchFormInputs) {
-    alert(form.destination)
-    // try {
-    //   const sectorIndex = sectors.findIndex((s) => s.name === form.sector)
-    //   const to = sectors[sectorIndex].email || 'secretaria@funada.com.br'
-
-    //   const sendData: IEmailContactPostProps = {
-    //     ...form,
-    //     to,
-    //     sector: form.sector,
-    //     contact: 'Contato',
-    //     subject: `* [Envio de Contato ${form.sector}] - ${form.name} *`,
-    //   }
-
-    //   const res = await fetch('/contato/api/email-routes/contact', {
-    //     method: 'POST',
-    //     body: JSON.stringify(sendData),
-    //   })
-
-    //   if (res.status !== 200) {
-    //     const data = await res.json()
-    //     throw new AppError(data, res.status)
-    //   }
-
-    //   addToast('Mensagem enviada com sucesso!', 'success')
-    //   reset()
-    //   setIsShowing(false)
-    // } catch (error) {
-    //   console.log(error)
-    //   if (error instanceof AppError && error.statusCode === 429) {
-    //     addToast(error.message, 'error')
-    //   } else {
-    //     addToast('Ocorreu um erro! Tente novamente mais tarde', 'error')
-    //   }
-    // }
+    alert('Am I supposed to work?')
   }
 
   return (

@@ -1,4 +1,4 @@
-import { ComponentProps, useState } from 'react'
+import { ComponentProps, useEffect, useState } from 'react'
 import { UseFormRegisterReturn } from 'react-hook-form'
 import { VariantProps, tv } from 'tailwind-variants'
 
@@ -6,9 +6,9 @@ const container = tv({
   base: 'relative flex h-16 rounded-xl bg-transparent p-2 gap-1 cursor-pointer transition duration-300 focus-within:bg-white focus-within:shadow-card-shadow-light',
   variants: {
     actualState: {
-      default: 'bg-transparent',
+      default: 'bg-transparent shadow-none',
       focused: 'bg-white shadow-card-shadow-lighter',
-      filled: 'bg-transparent',
+      filled: 'bg-transparent shadow-none',
     },
   },
   defaultVariants: {
@@ -71,6 +71,10 @@ export function Input({
   function handleLostFocus() {
     if (actualState !== 'filled') setState('default')
   }
+
+  useEffect(() => {
+    setState(actualState)
+  }, [actualState])
 
   return (
     <div
