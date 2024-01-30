@@ -25,39 +25,39 @@
     font-variation-settings: 'wdth' 108, 'slnt' 0, 'GRAD' 0, 'XTRA' 468, 'YOPQ' 90, 'YTLC' 485, 'YTUC' 732, 'YTAS' 750, 'YTDE' -180, 'YTFI' 738, 'opsz' 13;
   }
 
-  h1, h2, h3, h4, h5, h6, .h7 {
+  .h1, .h2, .h3, .h4, .h5, .h6, .h7 {
     font-weight: 600;
     line-height: 1;
     text-transform: uppercase;
     font-variation-settings: 'wdth' 40, 'slnt' 0, 'GRAD' 0, 'XTRA' 468, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738, 'opsz' 144;
   }
 
-  h1 {
+  .h1 {
     font-size: 4.75rem/* 76px */;
     letter-spacing: 3.8px;
   }
 
-  h2 {
+  .h2 {
     font-size: 3.8125rem/* 61px */;
     letter-spacing: 3.05px;
   }
 
-  h3 {
+  .h3 {
     font-size: 3.0625rem/* 49px */;
     letter-spacing: 2.45px;
   }
 
-  h4 {
+  .h4 {
     font-size: 2.4375rem/* 39px */;
     letter-spacing: 1.95px;
   }
 
-  h5 {
+  .h5 {
     font-size: 1.9375rem/* 31px */;
     letter-spacing: 1.55px;
   }
 
-  h6 {
+  .h6 {
     font-size: 1.5625rem/* 25px */;
     letter-spacing: 1.25px;
   }

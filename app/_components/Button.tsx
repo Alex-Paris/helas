@@ -9,6 +9,8 @@ const container = tv({
         'bg-accent-green text-white border-transparent hover:bg-accent-blue',
       outlined:
         'bg-transparent text-text-on-image border-text-on-image hover:bg-accent-green hover:border-transparent hover:text-white',
+      'outlined-green':
+        'bg-transparent text-accent-green border-acctext-accent-green hover:bg-accent-green hover:border-transparent hover:text-white',
     },
   },
   defaultVariants: {
