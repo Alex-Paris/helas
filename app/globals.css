@@ -9,12 +9,13 @@
     box-sizing: border-box;
   }
 
+  html {
+    min-height: 100%;
+    position: relative;
+  }
+
   body {
     background-color: theme('colors.background');
-    background-image: url('/img/bg-draw-top.svg'), url('/img/bg-draw-bottom.svg');
-    background-position: top center, bottom center;
-    background-repeat: no-repeat;
-    background-size: contain;
     font-family: theme('fontFamily.sans');
     -webkit-font-smoothing: antialiased;
   }
@@ -65,6 +66,38 @@
   .h7 {
     font-size: 1.25rem/* 20px */;
     letter-spacing: 1px;
+  }
+
+  .anim_background {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #00B9F2 0%, #00B9F2 40%, #009649 60%, #009649 100%);
+    background-size : 6000% 400%;
+    animation : gradient 25s ease infinite;
+    opacity: 0.8;
+    z-index: -10;
+  }
+
+  .anim_background_top {
+    -webkit-mask: url('/img/bg-draw-top.svg') top center / contain no-repeat;
+    mask: url('/img/bg-draw-top.svg') top center / contain no-repeat;
+  }
+
+  .anim_background_bottom {
+    -webkit-mask: url('/img/bg-draw-bottom.svg') bottom center / contain no-repeat;
+    mask: url('/img/bg-draw-bottom.svg') bottom center / contain no-repeat;
+  }
+          
+  @keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 }
 

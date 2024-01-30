@@ -34,7 +34,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="el">
-      <body className={roboto.variable}>{children}</body>
+      <body className={roboto.variable}>
+        <div className="anim_background anim_background_top" />
+        <div className="anim_background anim_background_bottom" />
+        {children}
+      </body>
     </html>
   )
 }

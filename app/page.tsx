@@ -38,7 +38,10 @@ export default async function Home({ searchParams }: HomeProps) {
           </div>
 
           <div className="flex w-full justify-between sm:w-auto">
-            <Button className="px-4 py-[0.8125rem]" styleType="outlined-green">
+            <Button
+              className="flex px-4 py-[0.8125rem] lg:hidden"
+              styleType="outlined-green"
+            >
               <Sliders size={16} /> Φίλτρα
             </Button>
             <Ordering actualOrder={searchParams.order} />
