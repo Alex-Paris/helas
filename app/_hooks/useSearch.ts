@@ -28,6 +28,7 @@ export default function useSearch() {
       const regex = new RegExp('\\b' + value + '\\b,?', 'g')
       const newParamValue = paramValue.replace(regex, '')
 
+      // If no value, then remove the param completely. Else, remove the value from the param.
       newParamValue !== ''
         ? newParams.set(type, encodeURIComponent(newParamValue))
         : newParams.delete(type)

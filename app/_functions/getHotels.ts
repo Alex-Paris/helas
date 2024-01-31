@@ -20,6 +20,7 @@ export async function getHotels(searchParams: ISearchParams) {
   const body = await res.json().catch(() => [])
   const hotels = body.data as IHotelDTO[]
 
+  // Filtering hotels by query parameters
   const filteredHotels: IHotelDTO[] = hotels.filter(
     (hotel) =>
       (meal ? decodedMeals.includes(hotel.meal_plan) : true) &&
@@ -30,11 +31,7 @@ export async function getHotels(searchParams: ISearchParams) {
         : true),
   )
 
-  // const filteredOrders = hotels.filter(order =>
-  //   (!minPrice || order.price >= parseFloat(minPrice)) &&
-  //   (!maxPrice || order.price <= parseFloat(maxPrice))
-  // )
-
+  // Getting meals list
   const meals = hotels
     .reduce((unique, order) => {
       if (!unique.includes(order.meal_plan)) unique.push(order.meal_plan)
@@ -43,6 +40,7 @@ export async function getHotels(searchParams: ISearchParams) {
     .slice()
     .sort()
 
+  // Getting rate list
   const stars = hotels
     .reduce((unique, order) => {
       if (!unique.includes(`${order.rating}`)) unique.push(`${order.rating}`)

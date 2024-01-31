@@ -8,9 +8,10 @@ import useSearch from '../_hooks/useSearch'
 interface FilterProps {
   meals: string[]
   stars: string[]
+  className?: string
 }
 
-export function Filter({ meals, stars }: FilterProps) {
+export function Filter({ meals, stars, className }: FilterProps) {
   const { handleParam } = useSearch()
   const params = useSearchParams()
 
@@ -50,8 +51,10 @@ export function Filter({ meals, stars }: FilterProps) {
   }, [params])
 
   return (
-    <div className="sticky top-4 my-3 hidden h-fit max-h-[calc(100vh-1.5rem)] flex-col gap-6 overflow-scroll rounded-xl bg-translucent-bg bg-scroll p-6 lg:flex">
-      <h5 className="mb-6">ΦΙΛΤΡΑ</h5>
+    <div
+      className={`flex h-fit max-h-[calc(100vh-1.5rem)] flex-col gap-6 rounded-xl p-2 lg:sticky lg:top-4 lg:my-3 lg:overflow-scroll lg:bg-translucent-bg lg:bg-scroll lg:p-6 ${className}`}
+    >
+      <p className="h5 mb-6">ΦΙΛΤΡΑ</p>
 
       {/* Euro price */}
       <div className="flex flex-col gap-6">

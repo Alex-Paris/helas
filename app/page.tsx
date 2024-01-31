@@ -1,10 +1,8 @@
-import { Sliders } from '@phosphor-icons/react/dist/ssr'
-
 import Breadcrumbs from './_components/Breadcrumbs'
-import { Button } from './_components/Button'
 import { Cards } from './_components/Cards'
 import { Filter } from './_components/Filter'
 import { Ordering } from './_components/Ordering'
+import { PopupFilter } from './_components/PopupFilter'
 import { Promo } from './_components/Promo'
 import SearchForm from './_components/Search'
 import { ISearchParams } from './_dtos/ISearchParams'
@@ -38,17 +36,12 @@ export default async function Home({ searchParams }: HomeProps) {
           </div>
 
           <div className="flex w-full justify-between sm:w-auto">
-            <Button
-              className="flex px-4 py-[0.8125rem] lg:hidden"
-              styleType="outlined-green"
-            >
-              <Sliders size={16} /> Φίλτρα
-            </Button>
+            <PopupFilter meals={meals} stars={stars} />
             <Ordering actualOrder={searchParams.order} />
           </div>
         </div>
 
-        <Filter meals={meals} stars={stars} />
+        <Filter meals={meals} stars={stars} className="hidden lg:flex" />
         <Cards cards={hotels} />
       </div>
 
